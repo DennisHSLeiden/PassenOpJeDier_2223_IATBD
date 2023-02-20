@@ -15,8 +15,8 @@ class CreateAanvraagTable extends Migration
     {
         if(!Schema::hasTable('aanvraag')){
             Schema::create('aanvraag', function (Blueprint $table) {
-                $table->UUID('aanvraag_id')->primary();
-                $table->UUID('huisdier_id');
+                $table->uuid('aanvraag_id')->primary();
+                $table->uuid('huisdier_id');
                 $table->text('wanneer');
                 $table->integer('prijs');
                 $table->text('extra_informatie');

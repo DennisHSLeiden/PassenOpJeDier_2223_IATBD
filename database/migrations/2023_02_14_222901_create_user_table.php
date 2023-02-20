@@ -15,9 +15,9 @@ class CreateUserTable extends Migration
     {
         if(!Schema::hasTable('users')){
             Schema::create('user', function (Blueprint $table) {
-                $table->UUID('user_id')->primary();
+                $table->uuid('user_id')->primary();
                 $table->string('voornaam');
-                $table->string('tussenvoegsel');
+                $table->string('tussenvoegsel')->nullable();
                 $table->string('achternaam');
                 $table->string('email')->unique();
                 $table->string('telefoonnummer')->unique();

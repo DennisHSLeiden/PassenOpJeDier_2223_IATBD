@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHuisdierTable extends Migration
+class CreateFotoWoningTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateHuisdierTable extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('huisdier')){
-            Schema::create('huisdier', function (Blueprint $table) {
-                $table->uuid('huisdier_id')->primary();
+        if(!Schema::hasTable('foto_woning')){
+            Schema::create('foto_woning', function (Blueprint $table) {
+                $table->uuid('foto_woning_id')->primary();
                 $table->uuid('user_id');
-                $table->string('naam');
-                $table->string('soort');
-                $table->text('generieke_informatie');
+                $table->string('titel');
+                $table->string('src');
+                $table->string('alt');
+                $table->text('beschrijving');
                 $table->foreign('user_id')->references('user_id')->on('user')->onDelete('cascade');
             });
         }
@@ -32,10 +33,11 @@ class CreateHuisdierTable extends Migration
      */
     public function down()
     {
-        Schema::table('huisdier', function (Blueprint $table){
+        Schema::table('foto_woning', function (Blueprint $table){
             $table->dropForeign(['user_id']);
             $table->dropColumn('user_id');
         });
-        // Schema::dropIfExists('huisdier');
+
+        // Schema::dropIfExists('foto');
     }
 }

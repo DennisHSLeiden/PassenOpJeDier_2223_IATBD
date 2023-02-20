@@ -15,9 +15,9 @@ class CreateReviewTable extends Migration
     {
         if(!Schema::hasTable('review')){
             Schema::create('review', function (Blueprint $table) {
-                $table->UUID('review_id')->primary();
-                $table->UUID('user_id');
-                $table->UUID('huisdier_id');
+                $table->uuid('review_id')->primary();
+                $table->uuid('user_id');
+                $table->uuid('huisdier_id');
                 $table->text('review');
                 $table->foreign('user_id')->references('user_id')->on('user')->onDelete('cascade');
                 $table->foreign('huisdier_id')->references('huisdier_id')->on('huisdier')->onDelete('cascade');

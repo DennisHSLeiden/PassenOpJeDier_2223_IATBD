@@ -15,11 +15,11 @@ class CreateReactieTable extends Migration
     {
         if(!Schema::hasTable('reactie')){
             Schema::create('reactie', function (Blueprint $table) {
-                $table->UUID('reactie_id')->primary();
-                $table->UUID('user_id');
-                $table->UUID('huisdier_id');
+                $table->uuid('reactie_id')->primary();
+                $table->uuid('user_id');
+                $table->uuid('huisdier_id');
                 $table->text('comment');
-                $table->boolean('antwoord');
+                $table->boolean('antwoord')->default(false);
                 $table->foreign('user_id')->references('user_id')->on('user');
                 $table->foreign('huisdier_id')->references('huisdier_id')->on('huisdier')->onDelete('cascade');
             });
